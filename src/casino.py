@@ -2,7 +2,8 @@ from src.casino_balance import CasinoBalance
 from src.chip import Chip
 from src.constants import RNG
 from src.goose import Goose
-from src.goose_collections import GooseCollection, GooseIncome
+from src.goose_collections import GooseCollection
+from src.goose_income import GooseIncome
 from src.goose_ocg import GooseOCG
 from src.player import Player
 from src.player_collection import PlayerCollection
