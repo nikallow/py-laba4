@@ -18,6 +18,7 @@ class CasinoBalance:
         Регистрирует игрока с нулевым количеством фишек.
 
         :param player: Игрок
+        :type player: Player
         """
         self._balances[player] = Chip(0)
         print(f"Фишки {player.name}: 0")
@@ -27,7 +28,9 @@ class CasinoBalance:
         Добавляет фишки игроку.
 
         :param player: Игрок
+        :type player: Player
         :param amount: Количество фишек
+        :type amount: int
         """
         self[player] = self[player] + Chip(amount)
 
@@ -36,6 +39,7 @@ class CasinoBalance:
         Обнуляет количество фишек игрока.
 
         :param player: Игрок
+        :type player: Player
         """
         self[player] = Chip(0)
 
@@ -44,6 +48,7 @@ class CasinoBalance:
         Возвращает фишки игрока.
 
         :param player: Игрок
+        :type player: Player
         :raises KeyError: Если игрок не зарегистрирован
         :returns: Фишки игрока
         """
@@ -57,7 +62,9 @@ class CasinoBalance:
         Устанавливает количество фишек игрока.
 
         :param player: Игрок
+        :type player: Player
         :param chips: Фишки
+        :type chips: Chip
         :raises KeyError: Если игрок не зарегистрирован
         :returns: None
         """

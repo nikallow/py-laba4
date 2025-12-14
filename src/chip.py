@@ -18,6 +18,7 @@ class Chip:
         Складывает фишки.
 
         :param other: Другие фишки
+        :type other: Chip
         :return: Новый объект Chip
         """
         if not isinstance(other, Chip):
@@ -29,6 +30,7 @@ class Chip:
         Умножает количество фишек.
 
         :param k: Множитель
+        :type k: int
         :returns: Новый объект Chip
         """
         return Chip(self.value * k)

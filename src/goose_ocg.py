@@ -21,7 +21,9 @@ class GooseOCG:
         Объединяет гусей в ОПГ.
 
         :param first: Первый гусь (может быть одиночкой или состоять в ОПГ)
+        :type first: Goose
         :param second: Второй гусь (обязан быть одиночкой)
+        :type second: Goose
         :return: ОПГ, в которую в итоге входят гуси
         :raises ValueError:
             - если гуси совпадают
@@ -50,6 +52,7 @@ class GooseOCG:
         Добавляет гуся в ОПГ и переносит доход.
 
         :param goose: Гусь, добавляемый в ОПГ
+        :type goose: Goose
         :raises ValueError: Если гусь уже состоит в другой ОПГ
         :returns: None
         """
@@ -81,6 +84,7 @@ class GooseOCG:
         ОПГ атакует игрока.
 
         :param player: Игрок
+        :type player: Player
         :returns: Украденные деньги
         """
         if player.is_dead or self.war_geese.total_strength == 0:
@@ -102,6 +106,7 @@ class GooseOCG:
         ОПГ кричит на игрока.
 
         :param player: Игрок
+        :type player: Player
         :returns: None
         """
 
@@ -120,6 +125,7 @@ class GooseOCG:
         Банк проигравшей ОПГ переходит победителю.
 
         :param other: Другая ОПГ
+        :type other: GooseOCG
         :returns: Победившая ОПГ
         """
         self_strength = self.war_geese.total_strength

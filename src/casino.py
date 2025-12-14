@@ -27,6 +27,7 @@ class Casino:
         Регистрирует игрока.
 
         :param player: Игрок
+        :type player: Player
         :returns: None
         """
         self.players.add(player)
@@ -38,6 +39,7 @@ class Casino:
         Регистрирует одиночного гуся.
 
         :param goose: Гусь
+        :type goose: Goose
         :returns: None
         """
         self.geese.add(goose)
@@ -74,6 +76,8 @@ class Casino:
                 - обменять все фишки на деньги
 
         :param player: Игрок
+        :type player: Player
+        :returns: None
         """
         if player.is_dead or player.balance <= 0:
             print("Кто сюда труп притащил???")

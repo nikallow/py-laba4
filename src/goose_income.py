@@ -18,7 +18,7 @@ class GooseIncome:
         Возвращает доход владельца.
 
         :param owner: Гусь или ОПГ
-        :type owner: Goose | OCG
+        :type owner: Goose | GooseOCG
         :raises KeyError: Если владелец отсутствует
         :return: Доход владельца
         :rtype: int
@@ -32,7 +32,7 @@ class GooseIncome:
         Устанавливает доход владельца.
 
         :param owner: Гусь или ОПГ
-        :type owner: Goose | OCG
+        :type owner: Goose | GooseOCG
         :param value: Новое значение дохода
         :type value: int
         """
@@ -43,7 +43,7 @@ class GooseIncome:
         Добавляет доход владельцу.
 
         :param owner: Гусь или ОПГ
-        :type owner: Goose | OCG
+        :type owner: Goose | GooseOCG
         :param amount: Сумма дохода
         :type amount: int
         """
@@ -54,7 +54,7 @@ class GooseIncome:
         Удаляет и возвращает доход владельца.
 
         :param owner: Гусь или ОПГ
-        :type owner: Goose | OCG
+        :type owner: Goose | GooseOCG
         :return: Доход владельца или 0, если отсутствует
         :rtype: int
         """
