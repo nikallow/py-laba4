@@ -31,22 +31,22 @@ def test_adjust_panic_upper_bound():
     assert p.panic_level == 20
 
 
-def test_take_money_partial():
+def test_steal_money_partial():
     p = Player("Игрок1", 100)
 
-    taken = p.take_money(30)
+    stolen = p.steal_money(30)
 
-    assert taken == 30
+    assert stolen == 30
     assert p.balance == 70
     assert p.is_dead is False
 
 
-def test_take_money_all_and_die():
+def test_steal_money_all_and_die():
     p = Player("Игрок1", 50)
 
-    taken = p.take_money(100)
+    stolen = p.steal_money(100)
 
-    assert taken == 50
+    assert stolen == 50
     assert p.balance == 0
     assert p.is_dead is True
 
@@ -69,3 +69,22 @@ def test_repr_contains_state():
     assert "balance=100" in text
     assert "panic=0" in text
     assert "dead=False" in text
+
+
+def test_pay_does_not_kill():
+    p = Player("Игрок1", 50)
+
+    paid = p.pay(100)
+
+    assert paid == 50
+    assert p.balance == 0
+    assert p.is_dead is False
+
+
+def test_receive_money():
+    p = Player("Игрок1", 50)
+
+    p.receive_money(30)
+
+    assert p.balance == 80
+    assert p.is_dead is False

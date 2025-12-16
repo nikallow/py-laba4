@@ -68,6 +68,8 @@ class WarGoose(Goose):
         """
         percent = min(100, self.strength * 5 + player.panic_level * 2)
         amount = int(player.balance * percent / 100)
-        stolen = player.take_money(amount)
-        print(f"{self} отжал {stolen} у {player.name} (баланс: {player.balance})")
+        stolen = player.steal_money(amount)
+        print(
+            f"{self} отжал {stolen} у {player.name} (баланс игрока: {player.balance})"
+        )
         return stolen

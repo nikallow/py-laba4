@@ -11,7 +11,7 @@ class PlayerCollection:
         self._players.append(player)
 
     def alive(self):
-        return [p for p in self._players if not p.is_dead]
+        return [p for p in self._players if p.is_alive()]
 
     def __iter__(self):
         return iter(self._players)

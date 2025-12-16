@@ -31,7 +31,7 @@ class Casino:
         :returns: None
         """
         self.players.add(player)
-        print(f"Зарегистрирован игрок {player}")
+        print(f"Зарегистрирован игрок {player.name}")
         self.balance.register_player(player)
 
     def register_goose(self, goose: Goose) -> None:
@@ -79,76 +79,74 @@ class Casino:
         :type player: Player
         :returns: None
         """
-        if player.is_dead or player.balance <= 0:
+        if not player.is_alive():
             print("Кто сюда труп притащил???")
+            return
+
+        if not player.can_pay():
+            print("Пошёл вон, бомжара!")
             return
 
         chips = self.balance[player]
 
+        # 1. Нет фишек — покупка + крутка
         if not chips:
+            print(f"{player.name} купил фишки")
             amount = RNG.randint(1, player.balance)
-            player.balance -= amount
-            self.balance[player] = Chip(amount)
 
-            print(
-                f"{player.name} купил фишки: {amount} "
-                f"(Остаток на балансе: {player.balance})"
-            )
+            paid = player.pay(amount)
+            if paid == 0:
+                return
+            self.balance[player] = Chip(paid)
 
             self._spin(player)
             return
 
-        # Если есть фишки
+        # 2. Если есть фишки
         action = RNG.randint(1, 3)
 
-        # 1. Крутить
+        # 2.1. Крутить
         if action == 1:
             self._spin(player)
 
-        # 2. Додеп + крутка
+        # 2.2. Додеп + крутка
         elif action == 2:
+            f"{player.name} сделал додеп:"
             add = RNG.randint(0, player.balance)
-            player.balance -= add
-            self.balance[player] = chips + Chip(add)
 
-            print(
-                f"{player.name} сделал додеп: {add} "
-                f"(Фишки: {self.balance[player].value}) "
-                f"(Остаток на балансе: {player.balance})"
-            )
+            paid = player.pay(add)
+            if paid > 0:
+                self.balance[player] = chips + Chip(paid)
+
+                print(f"(Фишки: {self.balance[player].value}) ")
 
             self._spin(player)
 
-        # 3. Обмен всех фишек на деньги
-        else:
+        # 2.3. Обмен всех фишек на деньги
+        elif action == 3:
             print(f"{player.name} обменял {chips.value} фишек на деньги")
-            player.balance += chips.value
+            player.receive_money(chips.value)
             self.balance.reset(player)
 
     def form_ocg(self) -> None:
         """
         Формирует ОПГ из двух гусей.
         """
+        # second — строго из одиночек
         free_geese = [g for g in self.geese if g.ocg is None]
-
         if not free_geese:
             print("Все гуси разбежались по ОПГ")
             return
-
-        # second — строго из одиночек
         second = RNG.choice(free_geese)
 
         # first — любой гусь, кроме second
         possible_first = [g for g in self.geese if g is not second]
-
         if not possible_first:
             print("Недостаточно гусей для формирования ОПГ")
             return
-
         first = RNG.choice(possible_first)
 
         ocg = GooseOCG.unite(first, second)
-
         if ocg not in self.ocgs:
             self.ocgs.append(ocg)
 
