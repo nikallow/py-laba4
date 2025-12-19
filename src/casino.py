@@ -31,7 +31,7 @@ class Casino:
         :returns: None
         """
         self.players.add(player)
-        print(f"Зарегистрирован игрок {player.name}")
+        print(f"Зарегистрирован игрок {player}")
         self.balance.register_player(player)
 
     def register_goose(self, goose: Goose) -> None:

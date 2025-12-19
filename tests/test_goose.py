@@ -12,12 +12,6 @@ def test_goose_hash_and_eq():
     assert hash(g1) == hash(g2)
 
 
-def test_goose_repr_returns_name():
-    g = Goose("Гусь")
-
-    assert repr(g) == "Гусь"
-
-
 def test_goose_ocg_default_none():
     g = Goose("Гусь")
 

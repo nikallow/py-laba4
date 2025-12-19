@@ -96,8 +96,11 @@ class Player:
     def __hash__(self):
         return hash(self.name)
 
+    def __str__(self):
+        return self.name
+
     def __repr__(self) -> str:
         return (
-            f"Player({self.name}, balance={self.balance}, "
-            f"panic={self.panic_level}, dead={self.is_dead}"
+            f"{self.__class__.__name__}({self.name}, balance={self.balance}, "
+            f"panic={self.panic_level}, dead={self.is_dead})"
         )
