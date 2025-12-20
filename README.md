@@ -35,6 +35,7 @@ uv run pytest
 │   ├── goose_collections.py # Коллекция гусей
 │   ├── goose_income.py # Коллекция доходов гусей
 │   ├── goose_ocg.py # ОПГ гусей
+│   ├── goose_ocg_collection.py # Коллекция ОПГ
 │   ├── main.py
 │   ├── player.py # Класс игрока
 │   ├── player_collection.py # Коллекция игроков
@@ -44,6 +45,7 @@ uv run pytest
 │   ├── test_casino_balance.py
 │   ├── test_goose.py
 │   ├── test_goose_collection.py
+│   ├── test_goose_ocg_collection.py
 │   ├── test_goose_income.py
 │   ├── test_goose_ocg.py
 │   ├── test_player.py
@@ -63,5 +65,7 @@ uv run pytest
 
 Игрок умирает, если на балансе 0 осталось после атаки гуся (гусь решил пожалеть и убил)
 ОПГ могут устроить стычку между собой
+
+После симуляции выводиться состояние всех коллекций
 
 P.S. вышел за дедлайн

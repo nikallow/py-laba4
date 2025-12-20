@@ -81,6 +81,12 @@ class GooseCollection:
         """
         return self._geese[index]
 
+    def __repr__(self):
+        lines = [f"{self.__class__.__name__}:"]
+        for goose in self._geese:
+            lines.append(repr(goose))
+        return "\n".join(lines)
+
 
 class WarGooseCollection(GooseCollection):
     """

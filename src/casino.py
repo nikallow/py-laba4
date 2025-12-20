@@ -5,6 +5,7 @@ from src.goose import Goose
 from src.goose_collections import GooseCollection
 from src.goose_income import GooseIncome
 from src.goose_ocg import GooseOCG
+from src.goose_ocg_collection import GooseOCGCollection
 from src.player import Player
 from src.player_collection import PlayerCollection
 
@@ -18,7 +19,7 @@ class Casino:
         self.balance = CasinoBalance()
 
         self.geese = GooseCollection()
-        self.ocgs: list[GooseOCG] = []
+        self.ocgs = GooseOCGCollection()
 
         self.goose_income = GooseIncome()
 
@@ -148,7 +149,7 @@ class Casino:
 
         ocg = GooseOCG.unite(first, second)
         if ocg not in self.ocgs:
-            self.ocgs.append(ocg)
+            self.ocgs.add(ocg)
 
     def goose_attack(self) -> None:
         """
@@ -248,3 +249,14 @@ class Casino:
 
         player = RNG.choice(players)
         self._interact_with_casino(player)
+
+    def print_states(self) -> None:
+        """
+        Выводит состояние всех коллекций
+        :return: None
+        """
+        print(f"\n{repr(self.players)}")
+        print(f"\n{repr(self.balance)}")
+        print(f"\n{repr(self.geese)}")
+        print(f"\n{repr(self.ocgs)}")
+        print(f"\n{repr(self.goose_income)}")
