@@ -144,5 +144,8 @@ class GooseOCG:
     def __eq__(self, other):
         return self is other
 
-    def __repr__(self) -> str:
-        return "ОПГ гусей"
+    def __str__(self) -> str:
+        return f"ОПГ гусей ID({id(self)})"
+
+    def __repr__(self):
+        return f"{self.__class__.__name__} ID({id(self)})"

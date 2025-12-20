@@ -59,3 +59,9 @@ class GooseIncome:
         :rtype: int
         """
         return self._income.pop(owner, 0)
+
+    def __repr__(self):
+        lines = ["Geese Income:"]
+        for owner, income in self._income.items():
+            lines.append(f" - {owner}: {income}")
+        return "\n".join(lines)

@@ -55,3 +55,5 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
 
         print(f"\n--- STEP {step + 1} ---")
         RNG.choice(events)()
+
+    casino.print_states()

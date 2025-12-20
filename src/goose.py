@@ -20,8 +20,11 @@ class Goose:
         self.name = name
         self.ocg: GooseOCG | None = None
 
-    def __repr__(self) -> str:
+    def __str__(self):
         return self.name
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.name}) in OCG({self.ocg})"
 
     def __hash__(self):
         return hash(self.name)
